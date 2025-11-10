@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition</title>
+    <style>
+        * , ::after, ::before{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container .box{
+            width: 400px;
+            height: 400px;
+            border: 1px solid black;
+            text-align: center;
+            margin-left: 90px;
+        }   
+        body:hover .box{
+            transform: translate(200px)  rotate(90deg) ;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            Transform
+        </div>
+        <hr>
+    </div>
+</body>
+</html>
