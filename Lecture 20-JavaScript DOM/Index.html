@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        i am first div
+    </div>
+    
+    <div class="div-first">
+        <div>i am first div</div>
+    </div>
+
+    <section class="c1 c2 c3 c4">
+        Section with four classes
+    </section>
+    
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam neque mollitia repellat accusantium dolore quisquam corporis molestias? Harum, officiis?</p>
+
+    <script> 
+        console.log(document.querySelector("div")); //  output:- i am first div
+
+        document.querySelector("p").style.color ="blue";
+        
+        document.querySelector("p").setAttribute("data" , "para");  
+         
+        document.querySelector("p").innerHTML="<strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum quam neque mollitia repellat accusantium dolore quisquam corporis molestias? Harum, officiis? </strong>";
+
+       let name =  document.querySelector(".c1").split(" ");
+       name.splice(2,1);
+       name.className=name.split(" ").join(" ");
+
+       
+      
+    </script>       
+</body>
+</html>

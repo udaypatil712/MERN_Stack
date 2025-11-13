@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin:13%;
+        }
+        .outer-div{
+            height: 100px;
+            width: 400px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner-div{
+            height: 70px;
+            width: 300px;
+            border: 1px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            padding: 3px;
+             border: 1px solid black;
+             width: fit-content;
+        }
+        
+
+    </style>
+
+</head>
+<body>
+    <div class="outer-div">
+        <div  class="inner-div">
+            <h1>hii from h1...</h1>
+        </div>
+    </div>
+
+    <script>
+        
+        let outeDiv = document.querySelector(".outer-div");
+        let innerDiv = document.querySelector(".inner-div");
+        let h1element =document.querySelector("h1");
+
+        outeDiv.addEventListener("click" , (event)=>{
+            console.log("outer");
+            outeDiv.style.backgroundColor ="red";
+        },true);
+        innerDiv.addEventListener("click" , (event)=>{
+            console.log("inner");
+            innerDiv.style.backgroundColor ="yellow";
+        },true);
+        h1element.addEventListener("click" , (event)=>{
+            console.log("h1");
+            h1element.style.backgroundColor ="blue";
+        },true);
+        
+
+    
+    </script>
+</body>
+</html>

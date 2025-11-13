@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Listners</title>
+</head>
+<body>
+    <h3 class="h3class">hii h3,,</h3>
+    <div>
+        <p>hii pa...</p>
+    </div>
+    <h1>
+
+    </h1>
+
+    <script>
+        //events in Dom
+
+        let para = document.querySelector("p");
+        let h1 = document.querySelector("h1");
+        para.addEventListener("click" , ()=>{
+            h1.innerHTML="hii h1...";
+        });
+
+        let h3element = document.getElementsByClassName(".h3class");
+        h3element[0].addEventListener("mouseup" ,(event)=>{
+            h3element.style.backgroundColor ="";
+        })
+        h3element[0].addEventListener("mousedown" ,(event)=>{
+            h3element.style.backgroundColor ="red";
+        })
+
+
+
+    </script>
+
+</body>
+</html>
