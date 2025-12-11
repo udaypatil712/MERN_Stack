@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Forms and Validations</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <input type="password" id="" maxlength="10" />
+    <br>
+    <input type="date">
+    <br>
+    <input type="time">
+    <br>
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <input type="checkbox">
+    <br>
+    <input type="radio" name="mcq" value="optionA">
+    <input type="radio" name="mcq" value="optionB">
+    <input type="radio" name="mcq" value="optionC">
+    <input type="radio" name="mcq" value="optionD">
+    <br>
+    <input type="radio" name="mcq2" value="optionA">
+    <input type="radio" name="mcq2" value="optionB">
+    <input type="radio" name="mcq2" value="optionC">
+    <input type="radio" name="mcq2" value="optionD">
+    <br>
+    <select name="" id="">
+        <option value="">Select</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+    <br>
+    <select name="" id="" multiple="true" size="4">
+        <option value="">Multiple Select</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+    <button>Submit</button>
+    <script>
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", () => {
+            const inputs = {};
+            inputs.password = document.querySelector("input[type=password]").value;
+
+            inputs.checkboxes = document.querySelectorAll("[type='checkbox']:checked");
+
+            inputs.dates = new Date(document.querySelector("input[type='date']").value);    //recommend to convert dates into new format
+
+            inputs.time = document.querySelector("input[type='time']").value;
+
+            inputs.radio1 = document.querySelector("input[name='mcq']:checked")?.value;
+            inputs.radio2 = document.querySelector("input[name='mcq2']:checked")?.value;
+
+            inputs.select = document.querySelector("select").options;
+            inputs.multiSelect = document.querySelector("[multiple=true]").options;
+
+
+            let selectArr = Array.from(inputs.multiSelect);
+
+            console.log(selectArr);
+
+            let filterArr = selectArr.filter((val) => {
+                return val.selected === true;
+            });
+
+            let mapArr = filterArr.map((val) => {
+                return val.value;
+            });
+
+            console.log(mapArr);
+
+            console.log(inputs);
+        });
+    </script>
+</body>
+
+</html>

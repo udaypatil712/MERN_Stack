@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Recipe Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        form {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        button {
+            width: 100%;
+            margin-top: 5px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: auto;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Add Recipe</h2>
+
+    <form id="recipeForm">
+
+        <label>Name:</label>
+        <input type="text" id="name" required>
+
+        <label>Ingredients:</label>
+        <textarea id="ingredients" required rows="3"></textarea>
+
+        <label>Time (minutes):</label>
+        <input type="number" required id="time">
+
+        <label>Difficulty:</label><br>
+        <input type="radio" name="difficulty" value="Easy"> Easy
+        <input type="radio" name="difficulty" value="Medium"> Medium
+        <input type="radio" name="difficulty" value="Hard"> Hard
+
+        <br><br>
+
+        <label>Category:</label><br>
+        <input type="checkbox" value="Veg" class="category"> Veg
+        <input type="checkbox" value="Non-Veg" class="category"> Non-Veg
+        <input type="checkbox" value="Dessert" class="category"> Dessert
+
+        <br><br>
+
+        <button type="submit">Save</button>
+
+    </form>
+
+    <script>
+        let form = document.getElementById("recipeForm");
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let ingredients = document.getElementById("ingredients").value;
+            let time = document.getElementById("time").value;
+            let difficulty = document.querySelector('input[name="difficulty"]:checked')?.value;
+
+            const categories = [];
+            document.querySelectorAll(".category:checked").forEach((item) => {
+                categories.push(item.value);
+            });
+
+            const recipeData = {
+                name,
+                ingredients,
+                time,
+                difficulty,
+                categories
+            };
+
+            localStorage.setItem("recipe", JSON.stringify(recipeData));
+
+            alert("data saved..");
+            // form.reset();
+            window.location.href = "components/ShowRecipes.html";
+        })
+
+        let savedRecipe = JSON.parse(localStorage.getItem("recipe"));
+
+        if (savedRecipe) {
+            document.getElementById('name').value = savedRecipe.name;
+            document.getElementById("ingredients").value = savedRecipe.ingredients;
+            document.getElementById("time").value = savedRecipe.time;
+
+            document.querySelectorAll('input[name="difficulty"]').forEach((radio) => {
+                if (radio.value === savedRecipe.difficulty) {
+                    radio.checked = true;
+                }
+            });
+
+            document.querySelectorAll(".category").forEach((box) => {
+                if (savedRecipe.categories.includes(box.value)) {
+                    box.checked = true;
+                }
+            });
+        }
+
+
+    </script>
+
+</body>
+
+</html>

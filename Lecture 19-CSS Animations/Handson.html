@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HandSon</title>
+    <style>
+
+        /* .grow{
+             animation-name: growCircle;
+             animation-duration: 2s; */
+            /* animation-delay: 3s; */
+            /* animation-iteration-count: infinite; */
+            /* animation-timing-function: ease-in-out; */
+            /* animation-direction: alternate;
+        } */
+        /* @keyframes growCircle{
+            from{
+                transform:translateY(0); */
+            /* } */
+            /* to{
+                transform:translateY(100px); */
+            /* }
+        } */
+
+        .grow {
+            transition-property: width;
+            transition-duration: 2s;
+            transition-timing-function: ease-in-out;
+        }
+
+        .grow:hover {
+            width: 200px;      /* animate width */
+            fill: aqua;        /* change color */
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- <svg width:"150" height:"150" >
+        <circle class="grow" cx = "75" cy = "75" r="20" fill="orange"></circle>
+    </svg> -->
+    <svg width="200" height="150" >
+        <rect class="grow"  width="150" height="100"  x="100" y="70" fill="orange"></rect>
+    </svg>
+</body>
+</html>

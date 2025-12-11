@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class PersonalDetails {
+            constructor({ name, age, dob }) {
+                this.name = name;
+                this.age = age;
+                this.dob = dob;
+            }
+            print() {
+                console.log("Personals :", this.name, this.age, this.dob);
+            }
+        }
+        class EducationalDetails {
+            constructor({ Sname, marks }) {
+                this.Sname = Sname;
+                this.marks = marks;
+
+            }
+            print() {
+                console.log("Educational :", this.Sname, this.marks);
+            }
+        }
+
+
+        class Person {
+            constructor(aadharNO, presonalDetails, educationalDetails) {
+                this.aadharNO = aadharNO;
+                this.presonalDetails = new PersonalDetails(presonalDetails);
+                this.educationalDetails = new EducationalDetails(educationalDetails);
+            }
+
+            print() {
+                console.log("aadhar :", this.aadharNO);
+                this.presonalDetails.print()
+                this.educationalDetails.print()
+            }
+
+        }
+
+        let presonalDetails = {
+            name: "uday",
+            age: 22,
+            dob: "7Dec2003"
+        }
+        let educationalDetails = {
+            Sname: "SGS",
+            marks: 70,
+        }
+
+        let person = new Person(13232, presonalDetails, educationalDetails);
+        person.print();
+
+    </script>
+</body>
+
+</html>

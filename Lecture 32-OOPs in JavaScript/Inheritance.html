@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class employee {
+
+            constructor(years) {
+                this.years = years;
+            }
+            salary() {
+                return this.years * 50000;
+            }
+        }
+
+        class salesEmp extends employee {
+            constructor(years) {
+                super(years);
+            }
+            salary() {
+                return this.years * 30000;
+            }
+        }
+
+        class leadEmp extends employee {
+            constructor(years) {
+                super(years);
+            }
+            salary() {
+                return this.years * 100000;
+            }
+        }
+
+        let sal = new employee(1);
+        console.log(sal.salary());  // 50,000
+
+        let sal1 = new salesEmp(2);
+        console.log(sal1.salary()); // 60000
+
+        let sal2 = new leadEmp(3);
+        console.log(sal2.salary()); // 300000
+
+//.....................................................................................
+
+        class Interest {
+            constructor(p, r, t, n) {
+                this.p = p;
+                this.r = r;
+                this.t = t;
+                this.n = n;
+            }
+            interest() {
+                return this.p * this.r * this.t;
+            }
+        }
+
+        class SimpleInterest extends Interest {
+            constructor(p, r, t) {
+                super(p, r, t);
+            }
+            simpleInterest() {
+                return Math.floor((this.p * this.r * this.t) / 100);
+            }
+
+
+        }
+
+        class CompoundInterest extends Interest {
+            constructor(p, r, t, n) {
+                super(p, r, t, n);
+            }
+            compoundInterest() {
+                return Math.floor(this.p * (1 + (this.r / this.n)) ** (this.n * this.t));
+            }
+
+        }
+
+        let si = new SimpleInterest(1000, 2, 3);
+        console.log(si.simpleInterest());
+
+        let ci = new CompoundInterest(1000, 2, 2, 3);
+        console.log(ci.compoundInterest());
+
+
+
+    </script>
+</body>
+
+</html>

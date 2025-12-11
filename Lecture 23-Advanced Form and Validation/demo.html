@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<input>
+
+<body>
+    <script>
+        // let key = "name";
+        // let value ="uday";
+
+
+        // localStorage.setItem("key", "patil");
+        // localStorage.setItem("key1", "uday");
+        // localStorage.setItem("key2", "pratik");
+        // localStorage.setItem("key3", "raj");
+
+
+        // for (let i = 0; i < localStorage.length; i++) {
+        //     console.log("key:" + localStorage.key(i), "value :" + localStorage.getItem(localStorage.key(i)))
+        // }
+
+        //update
+        // localStorage.setItem(key,"patil");
+
+        //delete
+        // localStorage.removeItem("key");
+
+        //read
+        // console.log(localStorage.getItem(key))
+
+        //delete all items
+        // localStorage.clear("");
+
+
+
+        // autosave 
+
+        let input = document.querySelector("input");
+
+        let autoKey = "";
+        input.value = localStorage.getItem(autoKey);
+        
+        input.addEventListener('input', () => {
+            let newInputValue = input.value;
+            localStorage.setItem(autoKey, newInputValue);
+        })
+
+
+        let arr = [2,3,455,6];
+        let strArr = arr.join(" ");
+        
+        localStorage.setItem('arr' , strArr);  
+        localStorage.getItem('arr').split(" ");
+
+        console.log(localStorage.getItem('arr').split(" "));
+    </script>
+</body>
+
+</html>000
