@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Quiz</title>
+</head>
+
+<body class="flex justify-center items-center min-h-screen bg-gray-100 p-6">
+
+    <main class="border bg-white shadow-lg rounded-xl w-full max-w-2xl p-6">
+        <h1 class="text-3xl font-bold mb-4 text-gray-800">Quiz</h1>
+
+        <section class="quiz space-y-6">
+
+            <!-- Timer -->
+            <span class="timer block text-right text-lg font-semibold text-red-500">
+                02:12
+            </span>
+
+            <!-- Question -->
+            <div class="question bg-gray-50 p-4 rounded-lg border">
+                <p class="text-gray-700 text-justify">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est possimus ab dolor,
+                    porro at rerum totam maiores consequatur nam quaerat adipisci ipsam aliquam eaque
+                    quisquam tenetur odio assumenda qui ipsa!
+                </p>
+            </div>
+
+            <!-- Options -->
+            <div class="options">
+                <ul class="space-y-3">
+                    <li class="p-3 border rounded-lg hover:bg-blue-100 cursor-pointer">Option 1</li>
+                    <li class="p-3 border rounded-lg hover:bg-blue-100 cursor-pointer">Option 2</li>
+                    <li class="p-3 border rounded-lg hover:bg-blue-100 cursor-pointer">Option 3</li>
+                    <li class="p-3 border rounded-lg hover:bg-blue-100 cursor-pointer">Option 4</li>
+                </ul>
+            </div>
+
+            <!-- Buttons -->
+            <div class="button flex justify-between pt-4">
+                <button class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400">
+                    Prev
+                </button>
+                <button class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                    Next
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="border-2 border-black p-4 m-20 flex flex-col gap-4 max-w-fit">
+        <span id="timer">00:00:00</span>
+        <p id="content" class="text-justify border-2 border-black p-4 ">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis numquam eos quasi culpa aut sapiente quaerat
+            esse. Necessitatibus atque animi beatae et provident enim, pariatur quos corporis quaerat repudiandae sint?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore suscipit et perferendis commodi modi
+            voluptatem placeat eum non! Alias est sit omnis ab natus cupiditate voluptatem dolorum quia pariatur
+            molestiae!
+        </p>
+        <textarea id="text" class="border-2 border-black flex p-2" disabled></textarea>
+        <button id="startBtn"
+            class="border border-black bg-blue-600 text-white w-min p-2 rounded-lg  self-end ">Start</button>
+    </div>
+
+    <script>
+        let timer = document.getElementById("timer");
+        let content = document.getElementById("content");
+        let userText = document.getElementById("text");
+        let startBtn = document.getElementById("startBtn");
+
+        let arr = [];
+        startBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            userText.disabled = false;
+            arr = (content.innerHTML).trim().split("")
+            timerFunction();
+        })
+
+        function timerFunction() {
+            let intialTime = 1 * 60;
+            let clearTime = setInterval(() => {
+                intialTime--;
+
+                let hrs = String(Math.floor(intialTime / 3600)).padStart(2, "0");
+                let min = String(Math.floor((intialTime / 60) % 60)).padStart(2, "0");
+                let sec = String(Math.floor(intialTime % 60)).padStart(2, "0");
+
+                timer.textContent = `${hrs}:${min}:${sec}`;
+
+                if (intialTime === 0) {
+                    clearInterval(clearTime);
+                    alert("Time is Over..")
+                }
+
+            }, 1000)
+        }
+
+
+        userText.addEventListener('input', (e) => {
+            let inputText = (e.target.value).split("");
+            let index = inputText.length - 1;
+            console.log(arr[index], " ", inputText[index])
+            if (arr[index] === inputText[index]) {
+                userText.style.color = "orange";
+            } else {
+                // userText.style.color = "blue";
+                // index--;
+                inputText.pop();
+                userText.value = inputText.join("");
+                // userText.disabled = true;
+            }
+
+        })
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

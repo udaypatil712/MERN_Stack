@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            margin: 0;
+            color: #333;
+        }
+
+        .quiz-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        .score {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            height: 20px;
+        }
+
+        .timer {
+            display: flex;
+            font-size: larger;
+            margin-left: 270px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <span class="timer" id="timer">00:00:00</span>
+    <div class="quiz-container">
+
+        <h1>Math Quiz</h1>
+
+        <div class="question" id="questionText"></div>
+
+        <input type="number" id="answerInput" placeholder="Enter your answer" />
+
+        <div class="score">Score: <span id="score">0</span></div>
+    </div>
+
+    <script>
+
+        class Question {
+            constructor() {
+                this.operatorArr = ["+", "-", "*", "/", "%", "**"];
+                this.num1 = this.random(100);
+                this.num2 = this.random(100);
+                this.operator = this.operatorArr[this.random(6) - 1];
+                this.score = this.random(50);
+                this.correctAnswer = this.calculateAns();
+            }
+            random(high) {
+                return 1 + Math.floor(Math.random() * high);
+            }
+            validatorAnswer(answer) {
+                // console.log(this.correctAnswer)
+                // console.log(answer)
+                return this.correctAnswer === Number(answer) ? this.score : 0;
+            }
+            calculateAns() {
+                switch (this.operator) {
+                    case "+": return this.num1 + this.num2;
+
+                    case "-": return this.num1 - this.num2;
+
+                    case "*": return this.num1 * this.num2;
+
+                    case "/": return Math.floor(this.num1 / this.num2);
+
+                    case "%": return this.num1 % this.num2;
+
+                    case "**": return this.num1 ** this.num2;
+
+                    default: alert("invalid input.." + this.operator)
+                }
+
+            }
+
+            display() {
+                return `${this.num1} ${this.operator} ${this.num2}`;
+            }
+        }
+
+        let ans = new Question();
+        // console.log(ans.display());
+
+        let questionDisplay = document.getElementById("questionText");
+        let answerInput = document.getElementById("answerInput");
+        let showScore = document.getElementById("score");
+        let showTimer = document.getElementById("timer");
+
+
+        class Quiz {
+            constructor() {
+                this.timeMinutes = this.random(1);
+                this.timer = this.timeMinutes * 60;
+                this.timerId = null;
+                this.question = new Question();
+                this.score = 0;
+
+                this.timerFunction();
+                this.displayCurrQuestion();
+            }
+            timerFunction() {
+                this.timerId = setInterval(() => {
+                    let hrs = String(Math.floor(this.timer / 3600)).padStart(2, "0");
+                    let min = String(Math.floor((this.timer / 60) % 60)).padStart(2, "0");
+                    let sec = String(Math.floor(this.timer % 60)).padStart(2, "0");
+
+                    showTimer.textContent = `${hrs}:${min}:${sec}`;
+
+                    if (this.timer <= 0) {
+                        clearInterval(this.timerId);
+                        alert("time is finished...")
+                    }
+                    console.log(this.timer)
+                    this.timer--;
+                }, 1000)
+
+
+
+            }
+            displayCurrQuestion() {
+                // this.timerFunction();
+                questionDisplay.textContent = this.question.display();
+
+            }
+            random(num) {
+                return 1 + Math.floor(Math.random() * num);
+            }
+
+            nextQuestion(userAns) {
+                // console.log(userAns)
+                this.score += this.question.validatorAnswer(userAns);
+                showScore.textContent = this.getScore();
+
+                this.question = new Question();
+                this.displayCurrQuestion();
+                answerInput.value = "";
+            }
+            getScore() {
+                return this.score;
+            }
+        }
+        let que1 = new Quiz();
+
+        answerInput.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                que1.nextQuestion(answerInput.value);
+            }
+        });
+
+    </script>
+</body>
+
+</html>
