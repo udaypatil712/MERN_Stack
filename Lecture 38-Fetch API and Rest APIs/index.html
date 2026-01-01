@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            padding: 40px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .card {
+
+            width: 300px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card h1 {
+            font-size: 22px;
+            margin: 15px 0 5px;
+            text-transform: capitalize;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #555;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="container" class="container">
+        <!-- <div id="card" class="card">
+            <h1 id="name">Watch</h1>
+
+            <img id="image" src="https://i.pinimg.com/originals/4f/f0/9a/4ff09a932cee7c4a57ccbb065b7724a0.jpg"
+                alt="Watch">
+
+            <div id="price" class="price">₹20,000</div>
+
+            <p id="desc">
+                Premium stylish watch with a modern design, perfect for both casual
+                and formal wear.
+            </p>
+        </div> -->
+
+    </div>
+
+
+
+
+    <script>
+        //fetch particular id of data
+
+        // fetch('https://dummyjson.com/products/2')
+        //     .then(res => {
+        //         console.log(res)
+        //         return res.json()
+        //     }).then((product) => {
+        //         showData(product)
+        //         if (!product.title) {
+        //             throw new Error(product.title)
+        //         }
+        //     }).catch((err) => {
+        //         console.log(err)
+        //     })
+
+        // function showData(data) {
+        //     console.log(data)
+        // }
+
+
+        let parent = document.getElementById("container");
+
+
+
+        fetch('https://dummyjson.com/products')
+            .then(res => res.json())
+            .then((data) => {
+                console.log(data)
+                showData(data)
+
+            }).catch((error) => {
+                console.log(error)
+            })
+
+        function showData(item) {
+
+            for (let i = 0; i < item.products.length; i++) {
+                let card = document.createElement("div");
+                card.className = "card";
+
+                card.innerHTML =
+                    `
+                <h1>${item.products[i].title}<h1/>
+                <img src=${item.products[i].thumbnail} alt=${item.products[i].title}>
+                <div>₹${item.products[i].price}</div>
+                <p>${item.products[i].description}</p>
+                `
+                parent.appendChild(card);
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

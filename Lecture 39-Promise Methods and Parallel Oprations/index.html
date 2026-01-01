@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+
+        let p1 = fetch("https://dummyjson.com/products");
+        let p2 = fetch("https://dummyjson.com/carts");
+        let p3 = fetch("https://dummyjson.com/user");
+
+        // Promise.all() , its return an array and but any one of them is rejected then reject 
+
+        // Promise.all([p1, p2, p3])
+        //     .then((responses) => {
+        //         responses.forEach((res) => {
+        //             if (!res.ok) {
+        //                 throw new Error(`HTTP Error: ${res.status}`);
+        //             }
+        //         });
+
+        //         return Promise.all(responses.map((res) => res.json()));
+        //     })
+        //     .then(([d1, d2, d3]) => {
+        //         console.log("All data:", d1, d2, d3);
+        //     })
+        //     .catch((error) => {
+        //         console.log("Catch executed:", error.message);
+        //     });
+
+
+        //Promise.race() , its returns single response
+
+        // Promise.race([p1, p2, p3])
+        //     .then((res) => {
+        //         console.log(res)
+        //         if (!res.ok) {
+        //             throw new Error(`Error from Http ${res.status}`)
+        //         }
+        //         return res.json();
+        //     })
+        //     .then((data) => {
+        //         console.log("First resolved data:", data);
+        //     })
+        //     .catch((error) => {
+        //         console.log(error.message)
+        //     })
+
+
+
+
+
+        // questions
+
+        // Difference between Promise.all() and Promise.allSettled()?
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
